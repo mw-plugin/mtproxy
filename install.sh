@@ -77,7 +77,7 @@ Install_app()
 	tar -C "$TARGET_DIR" -zxf $DOWNLOAD_FILE
 	rm -rf $DOWNLOAD_FILE
 
-	if [ -f ${serverPath}/mtproxy/mtg ];then
+	if [ -d ${serverPath}/mtproxy/mtg ];then
 		rm -rf ${serverPath}/mtproxy/mtg
 	fi
 
