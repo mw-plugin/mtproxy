@@ -12,7 +12,8 @@ install_tmp=${rootPath}/tmp/mw_install.pl
 
 apt install -y golang
 
-VERSION=''
+VERSION=v2.1.6
+VERSION_MIN=2.1.6
 OS=$(uname | tr '[:upper:]' '[:lower:]')
 
 
@@ -32,7 +33,7 @@ TARGET_DIR="${serverPath}/mtproxy"
 
 
 get_download_url() {
-	DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg_${VERSION}_${OS}_${ARCH}.tar.gz"
+	DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg_${VERSION_MIN}_${OS}_${ARCH}.tar.gz"
 }
 
 # download file
@@ -68,7 +69,7 @@ Install_app()
 	mkdir -p ${serverPath}/source/mtproxy
 
 	get_download_url
-	
+
 	DOWNLOAD_FILE="$(mktemp).tar.gz"
 	download_file $DOWNLOAD_URL $DOWNLOAD_FILE
 
