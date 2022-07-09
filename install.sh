@@ -77,6 +77,8 @@ Install_app()
 	tar -C "$TARGET_DIR" -zxf $DOWNLOAD_FILE
 	rm -rf $DOWNLOAD_FILE
 
+	mv ${serverPath}/mtproxy/mtg* mv ${serverPath}/mtproxy/mtg
+
 	# cd ${serverPath}/mtproxy
 	# curl -s https://core.telegram.org/getProxySecret -o proxy-secret
 	# curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
