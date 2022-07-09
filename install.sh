@@ -23,7 +23,6 @@ Install_app()
 	curl -s https://core.telegram.org/getProxySecret -o proxy-secret
 	curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
 
-	SECRET=`head -c 16 /dev/urandom | xxd -ps`
 
 	echo "${1}" > ${serverPath}/mtproxy/version.pl
 	echo '安装完成' > $install_tmp
