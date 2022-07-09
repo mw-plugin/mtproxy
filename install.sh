@@ -67,6 +67,7 @@ Install_app()
 	mkdir -p ${serverPath}/mtproxy
 	mkdir -p ${serverPath}/source/mtproxy
 
+	get_download_url
 	
 	DOWNLOAD_FILE="$(mktemp).tar.gz"
 	download_file $DOWNLOAD_URL $DOWNLOAD_FILE
