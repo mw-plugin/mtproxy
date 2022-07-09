@@ -33,7 +33,7 @@ TARGET_DIR="${serverPath}/mtproxy"
 
 
 get_download_url() {
-	DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg_${VERSION_MIN}_${OS}_${ARCH}.tar.gz"
+	DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg-${VERSION_MIN}-${OS}-${ARCH}.tar.gz"
 }
 
 # download file
