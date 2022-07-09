@@ -62,7 +62,7 @@ def status():
 
 
 def getServiceFile():
-    return systemDir = '/usr/lib/systemd/system/mtproxy.service'
+    return '/usr/lib/systemd/system/mtproxy.service'
 
 
 def initDreplace():
