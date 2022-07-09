@@ -19,7 +19,7 @@ Install_app()
 	git clone https://github.com/TelegramMessenger/MTProxy
 	cd MTProxy && make && cd objs/bin
 
-	${serverPath}/mtproxy
+	cd ${serverPath}/mtproxy
 	curl -s https://core.telegram.org/getProxySecret -o proxy-secret
 	curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
 
