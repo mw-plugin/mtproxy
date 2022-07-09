@@ -83,10 +83,13 @@ Install_app()
 
 	mv ${serverPath}/mtproxy/mtg-${VERSION_MIN}-${OS}-${ARCH} ${serverPath}/mtproxy/mtg
 
-
+	
 	echo "${1}" > ${serverPath}/mtproxy/version.pl
 	echo '安装完成' > $install_tmp
-		
+
+	#初始化 
+	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py start
+	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py initd_install
 }
 
 Uninstall_app()

@@ -77,7 +77,7 @@ def initDreplace():
     secret = mw.execShell('head -c 16 /dev/urandom | xxd -ps')
     if not os.path.exists(dstEnv):
         env_content = mw.readFile(envTpl)
-        env_content = env_content.replace('{$PROT}', '8349')
+        env_content = env_content.replace('{$PORT}', '8349')
         env_content = env_content.replace('{$SECRET}', secret[0].strip())
         mw.writeFile(dstEnv, env_content)
 
