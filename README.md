@@ -1,6 +1,10 @@
 # mtproxy
 MTProxy代理
 
+#
+``` 
+cd /www/server/mdserver-web && python3 /www/server/mdserver-web/plugins/mtproxy/index.py start
+```
 
 ## 安装基本
 ```

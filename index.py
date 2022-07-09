@@ -31,7 +31,7 @@ def getServiceTpl():
 
 
 def getConfEnvTpl():
-    path = getPluginDir() + "/mt.toml"
+    path = getPluginDir() + "/conf/mt.toml"
     return path
 
 
