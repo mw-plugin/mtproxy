@@ -59,7 +59,7 @@ def getArgs():
 
 def status():
     data = mw.execShell(
-        "ps -ef|grep mtproxy |grep -v grep | grep -v python  | awk '{print $2}'")
+        "ps -ef|grep mtproxy| grep mtg |grep -v grep | grep -v python  | awk '{print $2}'")
 
     if data[0] == '':
         return 'stop'
