@@ -69,10 +69,10 @@ def initDreplace():
 
     env = getConfEnv()
     secret = mw.execShell('head -c 16 /dev/urandom | xxd -ps')
-    if os.path.exists(env):
+    if not os.path.exists(env):
         wbody = "PORT=3498\n"
         wbody = wbody + "SECRET=" + secret[0].strip() + "\n"
-        mw.writeFile(envFile, wbody)
+        mw.writeFile(env, wbody)
 
     # systemd
     systemDir = '/usr/lib/systemd/system'
