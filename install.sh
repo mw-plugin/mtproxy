@@ -83,10 +83,6 @@ Install_app()
 
 	mv ${serverPath}/mtproxy/mtg-${VERSION_MIN}-${OS}-${ARCH} ${serverPath}/mtproxy/mtg
 
-	# cd ${serverPath}/mtproxy
-	# curl -s https://core.telegram.org/getProxySecret -o proxy-secret
-	# curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
-
 
 	echo "${1}" > ${serverPath}/mtproxy/version.pl
 	echo '安装完成' > $install_tmp
