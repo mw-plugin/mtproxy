@@ -30,8 +30,13 @@ def getServiceTpl():
     return path
 
 
+def getConfEnvTpl():
+    path = getPluginDir() + "/mt.toml"
+    return path
+
+
 def getConfEnv():
-    path = getServerDir() + "/mt.env"
+    path = getServerDir() + "/mt.toml"
     return path
 
 
@@ -67,12 +72,14 @@ def getServiceFile():
 
 def initDreplace():
 
-    env = getConfEnv()
+    envTpl = getConfEnvTpl()
+    dstEnv = getConfEnv()
     secret = mw.execShell('head -c 16 /dev/urandom | xxd -ps')
     if not os.path.exists(env):
-        wbody = "PORT=3498\n"
-        wbody = wbody + "SECRET=" + secret[0].strip() + "\n"
-        mw.writeFile(env, wbody)
+        env_content = mw.readFile(envTpl)
+        env_content = env_content.replace('{$PROT}', '8349')
+        env_content = env_content.replace('{$SECRET}', secret[0].strip())
+        mw.writeFile(dstEnv, env_content)
 
     # systemd
     systemDir = '/usr/lib/systemd/system'
