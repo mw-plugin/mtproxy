@@ -94,6 +94,11 @@ Install_app()
 
 Uninstall_app()
 {
+	if [ -f /usr/lib/systemd/system/mtproxy.service ];then
+		systemctl stop mtproxy
+		rm -rf /usr/lib/systemd/system/mtproxy.service
+		systemctl daemon-reload
+	fi
 	rm -rf ${serverPath}/mtproxy
 	echo '卸载完成' > $install_tmp
 }
