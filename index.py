@@ -74,7 +74,8 @@ def initDreplace():
 
     envTpl = getConfEnvTpl()
     dstEnv = getConfEnv()
-    secret = mw.execShell('head -c 16 /dev/urandom | xxd -ps')
+    cmd = getServerDir() + '/mtg/mtg generate-secret `head -c 16 /dev/urandom | xxd -ps`'
+    secret = mw.execShell(cmd)
     if not os.path.exists(dstEnv):
         env_content = mw.readFile(envTpl)
         env_content = env_content.replace('{$PORT}', '8349')

@@ -81,6 +81,11 @@ Install_app()
 		rm -rf ${serverPath}/mtproxy/mtg
 	fi
 
+	cd ${serverPath}/mtproxy
+	curl -s https://core.telegram.org/getProxySecret -o proxy-secret
+	curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
+	
+
 	mv ${serverPath}/mtproxy/mtg-${VERSION_MIN}-${OS}-${ARCH} ${serverPath}/mtproxy/mtg
 
 	
