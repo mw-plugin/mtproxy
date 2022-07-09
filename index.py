@@ -92,7 +92,7 @@ def initDreplace():
         mw.writeFile(systemService, se_content)
         mw.execShell('systemctl daemon-reload')
 
-    return file_bin
+    return 'ok'
 
 
 def mtOp(method):
