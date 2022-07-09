@@ -9,19 +9,74 @@ serverPath=$(dirname "$rootPath")
 
 install_tmp=${rootPath}/tmp/mw_install.pl
 
+
+apt install -y golang
+
+VERSION=''
+OS=$(uname | tr '[:upper:]' '[:lower:]')
+
+
+get_arch() {
+	echo "package main
+import (
+	\"fmt\"
+	\"runtime\"
+)
+func main() { fmt.Println(runtime.GOARCH) }" > /tmp/go_arch.go
+
+	ARCH=$(go run /tmp/go_arch.go)
+}
+
+TARGET_DIR="${serverPath}/mtproxy"
+
+
+
+get_download_url() {
+	DOWNLOAD_URL="https://github.com/9seconds/mtg/releases/download/$VERSION/mtg_${VERSION}_${OS}_${ARCH}.tar.gz"
+}
+
+# download file
+download_file() {
+    url="${1}"
+    destination="${2}"
+
+    printf "Fetching ${url} \n\n"
+
+    if test -x "$(command -v curl)"; then
+        code=$(curl --connect-timeout 15 -w '%{http_code}' -L "${url}" -o "${destination}")
+    elif test -x "$(command -v wget)"; then
+        code=$(wget -t2 -T15 -O "${destination}" --server-response "${url}" 2>&1 | awk '/^  HTTP/{print $2}' | tail -1)
+    else
+        printf "\e[1;31mNeither curl nor wget was available to perform http requests.\e[0m\n"
+        exit 1
+    fi
+
+    if [ "${code}" != 200 ]; then
+        printf "\e[1;31mRequest failed with code %s\e[0m\n" $code
+        exit 1
+    else 
+	    printf "\n\e[1;33mDownload succeeded\e[0m\n"
+    fi
+}
+
+
+
 Install_app()
 {
 
 	mkdir -p ${serverPath}/mtproxy
 	mkdir -p ${serverPath}/source/mtproxy
 
-	cd ${serverPath}/source/mtproxy
-	git clone https://github.com/TelegramMessenger/MTProxy
-	cd MTProxy && make && cd objs/bin
+	
+	DOWNLOAD_FILE="$(mktemp).tar.gz"
+	download_file $DOWNLOAD_URL $DOWNLOAD_FILE
 
-	cd ${serverPath}/mtproxy
-	curl -s https://core.telegram.org/getProxySecret -o proxy-secret
-	curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
+	tar -C "$TARGET_DIR" -zxf $DOWNLOAD_FILE
+	rm -rf $DOWNLOAD_FILE
+
+	# cd ${serverPath}/mtproxy
+	# curl -s https://core.telegram.org/getProxySecret -o proxy-secret
+	# curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
 
 
 	echo "${1}" > ${serverPath}/mtproxy/version.pl
