@@ -83,7 +83,7 @@ def initDreplace():
         mw.writeFile(dstEnv, env_content)
 
     # systemd
-    systemDir = '/usr/lib/systemd/system'
+    systemDir = mw.systemdCfgDir()
     systemService = systemDir + '/mtproxy.service'
     systemServiceTpl = getServiceTpl()
     if os.path.exists(systemDir) and not os.path.exists(systemService):
