@@ -93,8 +93,8 @@ Install_app()
 	echo '安装完成' > $install_tmp
 
 	#初始化 
-	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py start
-	cd ${rootPath} && python3 ${rootPath}/plugins/mysql/index.py initd_install
+	cd ${rootPath} && python3 ${rootPath}/plugins/mtproxy/index.py start
+	cd ${rootPath} && python3 ${rootPath}/plugins/mtproxy/index.py initd_install
 }
 
 Uninstall_app()
