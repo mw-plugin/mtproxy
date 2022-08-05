@@ -60,7 +60,7 @@ download_file() {
     fi
 }
 
-
+# /www/server/mtproxy/mtg/mtg run /www/server/mtproxy/mt.toml
 
 Install_app()
 {
