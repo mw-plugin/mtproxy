@@ -103,7 +103,7 @@ def mtOp(method):
         data = mw.execShell('systemctl ' + method + ' mtproxy')
         if data[1] == '':
             return 'ok'
-        return 'fail'
+        return data[1]
 
     return 'fail'
 
