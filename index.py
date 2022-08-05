@@ -100,6 +100,7 @@ def mtOp(method):
     file = initDreplace()
 
     if not mw.isAppleSystem():
+        mw.execShell('systemctl daemon-reload')
         data = mw.execShell('systemctl ' + method + ' mtproxy')
         if data[1] == '':
             return 'ok'
