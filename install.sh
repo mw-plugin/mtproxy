@@ -11,6 +11,7 @@ install_tmp=${rootPath}/tmp/mw_install.pl
 
 
 apt install -y golang
+yum install -y golang
 
 VERSION=v2.1.6
 VERSION_MIN=2.1.6
