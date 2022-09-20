@@ -16,14 +16,6 @@ OSNAME=`cat ${rootPath}/data/osname.pl`
 OSNAME_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
 
 
-if [[ $OSNAME = "centos" ]]; then
-    yum install -y golang
-elif [[ $OSNAME = "amazon" ]]; then
-    yum install -y golang
-else
-	apt install -y golang
-fi
-
 
 VERSION=v2.1.7
 VERSION_MIN=2.1.7
@@ -77,6 +69,14 @@ download_file() {
 
 Install_app()
 {
+
+	if [[ $OSNAME = "centos" ]]; then
+    	yum install -y golang
+	elif [[ $OSNAME = "amazon" ]]; then
+	    yum install -y golang
+	else
+		apt install -y golang
+	fi
 
 	mkdir -p ${serverPath}/mtproxy
 	mkdir -p ${serverPath}/source/mtproxy
