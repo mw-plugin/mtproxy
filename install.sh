@@ -10,11 +10,23 @@ serverPath=$(dirname "$rootPath")
 install_tmp=${rootPath}/tmp/mw_install.pl
 
 
-apt install -y golang
-yum install -y golang
 
-VERSION=v2.1.6
-VERSION_MIN=2.1.6
+bash ${rootPath}/scripts/getos.sh
+OSNAME=`cat ${rootPath}/data/osname.pl`
+OSNAME_ID=`cat /etc/*-release | grep VERSION_ID | awk -F = '{print $2}' | awk -F "\"" '{print $2}'`
+
+
+if [[ $OSNAME = "centos" ]]; then
+    yum install -y golang
+elif [[ $OSNAME = "amazon" ]]; then
+    yum install -y golang
+else
+	apt install -y golang
+fi
+
+
+VERSION=v2.1.7
+VERSION_MIN=2.1.7
 OS=$(uname | tr '[:upper:]' '[:lower:]')
 
 
