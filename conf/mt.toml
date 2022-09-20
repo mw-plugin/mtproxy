@@ -1,5 +1,8 @@
 #secret = "7t9xA1qO1IpiPY6D5mrsTQViaW5nLmNvbQ"
 
+
+debug = false
+
 secret = "{$SECRET}"
 bind-to = "0.0.0.0:{$PORT}"
 
