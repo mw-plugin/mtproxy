@@ -21,7 +21,7 @@ VERSION=v2.1.7
 VERSION_MIN=2.1.7
 OS=$(uname | tr '[:upper:]' '[:lower:]')
 
-
+ARCH='amd64'
 get_arch() {
 	echo "package main
 import (
