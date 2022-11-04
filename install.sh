@@ -71,11 +71,11 @@ Install_app()
 {
 
 	if [[ $OSNAME = "centos" ]]; then
-    	yum install -y golang
+    	yum install -y golang golang-src
 	elif [[ $OSNAME = "amazon" ]]; then
-	    yum install -y golang
+	    yum install -y golang golang-src
 	else
-		apt install -y golang
+		apt install -y golang golang-src
 	fi
 
 	mkdir -p ${serverPath}/mtproxy
